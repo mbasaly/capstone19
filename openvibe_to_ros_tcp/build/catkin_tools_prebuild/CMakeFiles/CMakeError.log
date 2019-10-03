@@ -1,0 +1,55 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/user/git/capstone19/openvibe_to_ros_tcp/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_83752/fast"
+/usr/bin/make -f CMakeFiles/cmTC_83752.dir/build.make CMakeFiles/cmTC_83752.dir/build
+make[1]: Entering directory '/home/user/git/capstone19/openvibe_to_ros_tcp/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_83752.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_83752.dir/CheckSymbolExists.c.o   -c /home/user/git/capstone19/openvibe_to_ros_tcp/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_83752
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_83752.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_83752.dir/CheckSymbolExists.c.o  -o cmTC_83752 -rdynamic 
+CMakeFiles/cmTC_83752.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_83752.dir/build.make:97: recipe for target 'cmTC_83752' failed
+make[1]: *** [cmTC_83752] Error 1
+make[1]: Leaving directory '/home/user/git/capstone19/openvibe_to_ros_tcp/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_83752/fast' failed
+make: *** [cmTC_83752/fast] Error 2
+
+File /home/user/git/capstone19/openvibe_to_ros_tcp/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/user/git/capstone19/openvibe_to_ros_tcp/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_69b5b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_69b5b.dir/build.make CMakeFiles/cmTC_69b5b.dir/build
+make[1]: Entering directory '/home/user/git/capstone19/openvibe_to_ros_tcp/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_69b5b.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_69b5b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_69b5b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69b5b.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_69b5b.dir/CheckFunctionExists.c.o  -o cmTC_69b5b -rdynamic -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_69b5b.dir/build.make:97: recipe for target 'cmTC_69b5b' failed
+make[1]: *** [cmTC_69b5b] Error 1
+make[1]: Leaving directory '/home/user/git/capstone19/openvibe_to_ros_tcp/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_69b5b/fast' failed
+make: *** [cmTC_69b5b/fast] Error 2
+
+

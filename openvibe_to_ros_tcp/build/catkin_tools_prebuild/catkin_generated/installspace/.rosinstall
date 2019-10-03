@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/user/capstone_ws/src/capstone19_link/openvibe_to_ros_tcp/install/setup.sh

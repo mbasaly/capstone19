@@ -1,0 +1,6 @@
+devel_space: /home/user/capstone_ws/src/capstone19_link/openvibe_to_ros_tcp/devel
+install: false
+install_space: /home/user/capstone_ws/src/capstone19_link/openvibe_to_ros_tcp/install
+profile: default
+source_space: /home/user/capstone_ws/src/capstone19_link/openvibe_to_ros_tcp/src
+workspace: /home/user/capstone_ws/src/capstone19_link/openvibe_to_ros_tcp

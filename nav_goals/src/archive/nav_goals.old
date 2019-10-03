@@ -4,7 +4,6 @@
 
 
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
-typedef actionlib::SimpleActionClient<client_node::
 
 /**
 direction specified by STIM: 1 = left, 2 = right.
@@ -21,7 +20,7 @@ switch(direction){
     goal.target_pose.pose.position.x = -1.0 * distance;
     break;
   case 2:
-    goal.target_pose.pose.position.x = 1.0* distance;
+    goal.target_pose.pose.position.x = 1.0 * distance;
     break;
   default: break;
 }

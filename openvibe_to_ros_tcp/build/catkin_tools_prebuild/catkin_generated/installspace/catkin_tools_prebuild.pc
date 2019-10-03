@@ -1,0 +1,8 @@
+prefix=/home/user/capstone_ws/src/capstone19_link/openvibe_to_ros_tcp/install
+
+Name: catkin_tools_prebuild
+Description: Description of catkin_tools_prebuild
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/user/capstone_ws/src/capstone19_link/openvibe_to_ros_tcp/install/lib 
+Requires: 
