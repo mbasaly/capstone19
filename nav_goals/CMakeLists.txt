@@ -116,7 +116,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -206,6 +206,6 @@ include_directories(
 # catkin_add_nosetests(test)
 
 
-add_executable(nav_goals src/nav_goals.cpp)
+add_executable(nav_goals src/nav_goals.cpp src/commandreader.cpp)
 target_link_libraries(nav_goals ${catkin_LIBRARIES})
 

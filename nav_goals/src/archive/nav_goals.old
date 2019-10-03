@@ -24,7 +24,7 @@ switch(direction){
     break;
   default: break;
 }
-  goal.target_post.pose.position.w = 1.0 * orientation;
+  goal.target_pose.pose.position.w = 1.0 * orientation;
 
   ROS_INFO("Sending goal");
   ac.sendGoal(goal);
