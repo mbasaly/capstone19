@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(nav_goals)
+project(std_nav_goals)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
- add_compile_options(-std=c++11)
+# add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -206,6 +206,5 @@ include
 # catkin_add_nosetests(test)
 
 
-add_executable(nav_goals src/nav_goals.cpp src/commandreader.cpp)
-target_link_libraries(nav_goals ${catkin_LIBRARIES})
-
+add_executable(simple_navigation_goals src/std_nav_goals.cpp)
+target_link_libraries(simple_navigation_goals ${catkin_LIBRARIES})

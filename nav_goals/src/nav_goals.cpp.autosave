@@ -135,7 +135,7 @@ int main(int argc, char** argv){
             ac.waitForResult();
 
             if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-            {   ROS_INFO("Goal reached"); //unlock a thread that allows command callback to continue
+            {   ROS_INFO("Goal reached"); 
             }
             else{ROS_INFO("Goal not reachable by robot. Stopping.");}
         }
