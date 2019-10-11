@@ -7,7 +7,10 @@
 #include <nav_msgs/Odometry.h>
 #include <mutex>
 
-
+#define START_STIM 30
+#define END_STIM 32
+#define LEFT_STIM 1
+#define RIGHT_STIM 2
 
 class CommandReader
 {
@@ -18,12 +21,19 @@ public:
     int getDirection();
     int getOrientation();
     bool getEndFlag();
+    bool getStimState();
     void odomCallback(const nav_msgs::OdometryConstPtr &msg);
+    void processCommand();
+    void nextTrial();
+
 protected:
 
 private:
     bool begin_trial_flag;
     bool end_trial_flag;
+    bool stim_received;
+
+    int current_stim;
     int left_stim_counter;
     int right_stim_counter;
     int counter_weight;
