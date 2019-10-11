@@ -46,6 +46,10 @@ using namespace std;
 //!
 //!
 //!
+//!* Create a callback within the TCP Node - this listens for the navigator's driving status and won't read more packets until stop
+//!
+//!
+//!
 
 
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
@@ -76,8 +80,6 @@ int main(int argc, char** argv){
             }
 
         }
-
-
         ROS_INFO_STREAM("Current goal: Direction - "<<commands.getDirection()<< " Counterweight - "<<commands.getCounterWeight());
 
         turtle.trajectoryMove(commands.getDirection(),commands.getCounterWeight(),commands.getOrientation(),ac_);

@@ -12,18 +12,39 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include "std_msgs/Int64.h"
+#include "move_base_msgs/MoveBaseActionResult.h"
+#include "move_base_msgs/MoveBaseActionGoal.h"
+//#include "std_msgs/Header.h"
 #include <sstream>
 #define MESSAGE_FREQ 100
 
 bool trial_begin = false;
-
+bool action_complete = true;
 
 void error(const char *msg) {
     perror(msg);
     exit(0);
 }
 
+void resultCallback(const move_base_msgs::MoveBaseActionResult& msg){
+    int status = unsigned(msg.status.status);
+    std::string result = msg.status.text;
+    ROS_INFO_STREAM("Goal status: " << result);
+    if(status > 0){
+        action_complete = 1;
+        trial_begin = 0;
+    }
+    else{action_complete = 0;}
+}
 
+
+void stateCallback(const move_base_msgs::MoveBaseActionGoal& msg){
+    int status = msg.goal.target_pose.header.stamp.toSec();
+    ROS_INFO_STREAM("Goal seq: " << status);
+    if (status > 0){
+        action_complete = 0;
+    }
+}
 
 
 int main(int argc, char *argv[]) {
@@ -32,6 +53,8 @@ int main(int argc, char *argv[]) {
 
     int zero_counter = 0;
     ros::Publisher chatter_pub = nh.advertise<std_msgs::Int64>("chatter", 1000);
+    ros::Subscriber nav_result_state = nh.subscribe("/move_base/result",1,resultCallback);
+    ros::Subscriber nav_goal_state = nh.subscribe("/move_base/goal",1,stateCallback);
     //    ros::ServiceServer service = nh.advertiseService();
     ros::Rate loop_rate(MESSAGE_FREQ); // Set rate as defined in the macro MESSAGE_FREQ
 
@@ -96,16 +119,20 @@ int main(int argc, char *argv[]) {
         }
         //Shows signals being received on the terminal when node is run
         switch(message.data){
-        case 30: ROS_INFO("Start of Trial"); trial_begin = true; break;
-        case 1: ROS_INFO("Left Stimulation"); break;
-        case 2: ROS_INFO("Right Stimulation"); break;
-        case 32:ROS_INFO("End of Trial"); break;
-        default: ROS_INFO("invalid packet"); break;
+        case 30: ROS_DEBUG("Start of Trial"); trial_begin = true; break;
+        case 1: ROS_DEBUG("Left Stimulation"); break;
+        case 2: ROS_DEBUG("Right Stimulation"); break;
+        case 32:ROS_DEBUG("End of Trial"); break;
+        default: ROS_DEBUG("invalid packet"); break;
         }
 
         //ROS_INFO("I heard: %s", message.data.c_str());
-        if(trial_begin)
-            chatter_pub.publish(message); // Publish msg to chatter
+        if(trial_begin && action_complete)
+     {       chatter_pub.publish(message); // Publish msg to chatter
+            ROS_INFO_STREAM("Sending: " << message.data);
+            ROS_DEBUG_STREAM("Only " << message.data << " was sent to the chatter topic");
+            if (message.data == 32){action_complete = 0;}
+    }
         ros::spinOnce();
     }
 

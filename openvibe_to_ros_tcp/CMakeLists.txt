@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(openvibe_to_ros_tcp)
+project(ov_ros_tcp)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)

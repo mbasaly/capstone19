@@ -36,7 +36,7 @@ private:
     int current_stim;
     int left_stim_counter;
     int right_stim_counter;
-    int counter_weight;
+    double counter_weight;
     int direction;
     int orientation;
 
