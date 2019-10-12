@@ -10,7 +10,7 @@ CommandReader::CommandReader(ros::NodeHandle nh) : nh_(nh)
 
     left_stim_counter = 0;
     right_stim_counter = 0;
-    counter_weight = 0;
+    counter_weight = 0.0;
     direction = 0;
     orientation = 1;
     command_sub_ = nh_.subscribe("/chatter",1000,&CommandReader::commandCallback, this);
@@ -20,7 +20,7 @@ CommandReader::CommandReader(ros::NodeHandle nh) : nh_(nh)
 
 }
 
-int CommandReader::getCounterWeight()
+double CommandReader::getCounterWeight()
 {
     return counter_weight;
 }
@@ -96,13 +96,16 @@ void CommandReader::processCommand(){
 
         if(left_stim_counter > right_stim_counter)
         {
-            counter_weight = left_stim_counter/(left_stim_counter+right_stim_counter);
+
+
+            counter_weight = static_cast<double>(left_stim_counter)/(left_stim_counter+right_stim_counter);
+
             direction = 1;
 
         }
         else if (right_stim_counter > left_stim_counter)
         {
-            counter_weight = right_stim_counter/(left_stim_counter+right_stim_counter);
+            counter_weight = static_cast<double>(right_stim_counter)/(left_stim_counter+right_stim_counter);
             direction = 2;
         }
         else direction = 0;
@@ -112,6 +115,7 @@ void CommandReader::processCommand(){
         ros::Duration(2).sleep(); //Wait 2 seconds
 
     }
+    ROS_INFO_STREAM("Direction bias: " << counter_weight);
     stim_received = 0;
 }
 

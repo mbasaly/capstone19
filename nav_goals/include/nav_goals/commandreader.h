@@ -17,7 +17,7 @@ class CommandReader
 public:
     CommandReader(ros::NodeHandle nh);
     void commandCallback(const std_msgs::Int64ConstPtr &message);
-    int getCounterWeight();
+    double getCounterWeight();
     int getDirection();
     int getOrientation();
     bool getEndFlag();

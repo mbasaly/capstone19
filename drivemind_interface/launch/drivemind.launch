@@ -1,0 +1,11 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="hostname" value="10.0.0.21"/>
+  <arg name="ov_tcp_port" value="5680/">
+
+  <!-- Navigation Goals -->
+  <node pkg="nav_goals" type="nav_goals" name="nav_goals"/>
+
+  <!-- TCP/IP Communication with OV -->
+  <node pkg = "ov_ros_tcp" type="ov_ros_tcp" name="client_node" args="$(arg hostname) $(arg ov_tcp_port)"/>
+</launch>
