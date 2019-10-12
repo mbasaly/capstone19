@@ -2,7 +2,7 @@
 <package>
   <name>ov_ros_tcp</name>
   <version>0.0.0</version>
-  <description>A package for communicating between ROS and openvibe using TCP/IP protocol.</description>
+  <description>Communication between OV and ROS via TCP</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
