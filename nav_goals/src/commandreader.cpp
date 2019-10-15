@@ -12,7 +12,7 @@ CommandReader::CommandReader(ros::NodeHandle nh) : nh_(nh)
     right_stim_counter = 0;
     counter_weight = 0.0;
     direction = 0;
-    orientation = 1;
+    orientation = 1; //180deg
     command_sub_ = nh_.subscribe("/chatter",1000,&CommandReader::commandCallback, this);
     //    odom_sub_ = nh_.subscribe("/odom",1,&CommandReader::odomCallback, this);
     //    ROS_INFO_STREAM("Odom sub topic " << odom_sub_.getTopic());
@@ -71,14 +71,14 @@ void CommandReader::processCommand(){
 
         if(begin_trial_flag == false)
         {
-            if(current_stim == START_STIM){begin_trial_flag = true; ROS_INFO_STREAM("Begin trial flag(should be 1): " << begin_trial_flag);}
+            if(current_stim == START_STIM){begin_trial_flag = true; ROS_DEBUG_STREAM("Begin trial flag(should be 1): " << begin_trial_flag);}
 
             else{ROS_INFO_STREAM("Command not accepted. Waiting for start of trial. Received: " << current_stim);
             }
         }
 
-        ROS_INFO_STREAM("trial begins");
-        ROS_INFO_STREAM("end trial flag is currently(should be 0): "<<end_trial_flag);
+        ROS_INFO_STREAM("Trial begins");
+        ROS_DEBUG_STREAM("end trial flag is currently(should be 0): "<<end_trial_flag);
         //Begin processing stimulations to determine command that will be sent
         //If '1' (left stim), increment left counter, If '2' (right stim), increment right counter. Wait for 'End of trial' stim
 

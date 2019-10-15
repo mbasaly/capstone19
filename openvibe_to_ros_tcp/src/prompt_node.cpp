@@ -117,27 +117,37 @@ int main(int argc, char *argv[]) {
             //todo: Publish an error command?
             ros::shutdown();
         }
+        //Colouring Prompts for visibility
+        std::string colour_start = "\033[31m";
+        std::string colour_end = "\033[32m";
+        std::string colour_left = "\033[33m";
+        std::string colour_right = "\033[34m";
+
+
+
+
         //Shows signals being received on the terminal when node is run
         switch(message.data){
-        case 30: ROS_DEBUG("Start of Trial"); trial_begin = true; 
-        std::cout << "===============================================" << std::endl;
-        std::cout << "================Start of Trial=================" << std::endl;
-        std::cout << "===============================================" << std::endl;
+        case 30: ROS_DEBUG("Start of Trial"); trial_begin = true;
+        
+        std::cout <<colour_start << "===============================================" << std::endl;
+        std::cout <<colour_start << "================Start of Trial=================" << std::endl;
+        std::cout <<colour_start << "===============================================" << std::endl;std::cout<<std::endl;
         break;
         case 1: ROS_DEBUG("Left Stimulation");
-            std::cout << "===============================================" << std::endl;
-            std::cout << "================  Think LEFT  =================" << std::endl;
-            std::cout << "===============================================" << std::endl;
+            std::cout <<colour_left << "===============================================" << std::endl;
+            std::cout <<colour_left << "================  Think LEFT  =================" << std::endl;
+            std::cout <<colour_left << "===============================================" << std::endl;std::cout<<std::endl;
         break;
         case 2: ROS_DEBUG("Right Stimulation");
-            std::cout << "===============================================" << std::endl;
-            std::cout << "================ Think RIGHT ==================" << std::endl;
-            std::cout << "===============================================" << std::endl;
+            std::cout << colour_right << "===============================================" << std::endl;
+            std::cout << colour_right << "================ Think RIGHT ==================" << std::endl;
+            std::cout << colour_right << "===============================================" << std::endl;std::cout<<std::endl;
             break;
         case 32:ROS_DEBUG("End of Trial");
-            std::cout << "===============================================" << std::endl;
-            std::cout << "================ End of Trial =================" << std::endl;
-            std::cout << "===============================================" << std::endl;
+            std::cout << colour_end << "===============================================" << std::endl;
+            std::cout << colour_end << "================ End of Trial =================" << std::endl;
+            std::cout << colour_end << "===============================================" << std::endl;std::cout<<std::endl;
         break;
         default: ROS_DEBUG("invalid packet"); break;
         }

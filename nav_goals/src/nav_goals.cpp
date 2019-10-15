@@ -64,14 +64,12 @@ int main(int argc, char** argv){
     Navigator turtle(nh);
     CommandReader commands(nh);
 
-    ROS_INFO_STREAM("outide ros ok "<<commands.getEndFlag());
-
-
+    std::cout << "===============================================" << std::endl;
+    std::cout << "=========== Welcome to DriveMind ==============" << std::endl;
+    std::cout << "===============================================" << std::endl;
 
     while(ros::ok()){
-        ROS_INFO_STREAM("inside ros ok "<<commands.getEndFlag());
-
-
+        ROS_INFO_STREAM("Waiting to receive your MI commands");
 
         while(commands.getEndFlag() == false) {
             ros::spinOnce();
@@ -80,14 +78,16 @@ int main(int argc, char** argv){
             }
 
         }
-        ROS_INFO_STREAM("Current goal: Direction - "<<commands.getDirection()<< " Counterweight - "<<commands.getCounterWeight());
+        ROS_INFO_STREAM("MI Commands received.");
+        ROS_INFO_STREAM_COND(commands.getDirection() == 1, "Going " << commands.getCounterWeight()*turtle.DIST_MODIFIER << " m to the left");
+        ROS_INFO_STREAM_COND(commands.getDirection() == 2, "Going " << commands.getCounterWeight()*turtle.DIST_MODIFIER << " m to the right");
+
+        ROS_DEBUG_STREAM("Current goal: Direction - "<<commands.getDirection()<< " Counterweight - "<<commands.getCounterWeight());
 
         turtle.trajectoryMove(commands.getDirection(),commands.getCounterWeight(),commands.getOrientation(),ac_);
         commands.nextTrial();
     }
 
-
-    //   std::shared_ptr<CommandReader> commands(new CommandReader(nh));
 
 
 

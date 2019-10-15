@@ -40,7 +40,7 @@ void resultCallback(const move_base_msgs::MoveBaseActionResult& msg){
 
 void stateCallback(const move_base_msgs::MoveBaseActionGoal& msg){
     int status = msg.goal.target_pose.header.stamp.toSec();
-    ROS_INFO_STREAM("Goal seq: " << status);
+    ROS_INFO_STREAM("Goal stamp: " << status);
     if (status > 0){
         action_complete = 0;
     }
@@ -128,11 +128,12 @@ int main(int argc, char *argv[]) {
 
         //ROS_INFO("I heard: %s", message.data.c_str());
         if(trial_begin && action_complete)
-     {       chatter_pub.publish(message); // Publish msg to chatter
+        {
+            chatter_pub.publish(message); // Publish msg to chatter
             ROS_INFO_STREAM("Sending: " << message.data);
             ROS_DEBUG_STREAM("Only " << message.data << " was sent to the chatter topic");
             if (message.data == 32){action_complete = 0;}
-    }
+        }
         ros::spinOnce();
     }
 

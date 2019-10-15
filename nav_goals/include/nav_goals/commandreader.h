@@ -38,7 +38,7 @@ private:
     int right_stim_counter;
     double counter_weight;
     int direction;
-    int orientation;
+    double orientation;
 
     std::mutex counter_mtx_;
     std::mutex direction_mtx_;
