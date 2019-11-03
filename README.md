@@ -1,2 +1,2 @@
-# capstone19
-Control of Robotic Interface using high-level BCI
+# NavMind - Integrating BCI technology with the ROS Navigation Stack
+Control of Robotic Interface using high-level BCI commands that allow ROS-enabled robotic interfaces to 
