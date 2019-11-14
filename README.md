@@ -5,7 +5,9 @@ This project was completed as a Capstone Project as part of a degree at the Univ
 
 ## Environment
 Robotic Interface: ROS Kinetic running on Ubuntu 16.04, configured as an NTP server
+
 EEG Interface: OpenVibe runing on Windows 10
+
 Turtlebot: Raspian Stretch (debian), configured as an NTP client of the ROS machine.
 
 ## Usage
